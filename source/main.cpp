@@ -1,6 +1,11 @@
 #include <iostream>
+#include "Logger/Logger.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+	auto& logger = Logger::get();
+
+	logger.log("Hello World");
+
+
     return 0;
 }
