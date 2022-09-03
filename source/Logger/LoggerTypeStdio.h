@@ -3,12 +3,12 @@
 
 #include "LoggerType.h"
 
-class LoggerTypeStdio : LoggerType
+class LoggerTypeStdio : public LoggerType
 {
 public:
 	LoggerTypeStdio();
 	~LoggerTypeStdio() override;
-	void log() override;
+	void log(const E_LOG_SEVERITY& severity, const std::string& message) override;
 };
 
 #endif //LOGGER_LOGGERTYPESTDIO_H
