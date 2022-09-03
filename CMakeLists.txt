@@ -13,6 +13,5 @@ endif()
 
 include_directories(include)
 file(GLOB_RECURSE sourceFiles CONFIGURE_DEPENDS "source/*.cpp")
-file(GLOB_RECURSE headerFiles CONFIGURE_DEPENDS "include/*.h")
 
-add_executable(${PROJECT_NAME} ${sourceFiles} ${headerFiles})
+add_executable(${PROJECT_NAME} ${sourceFiles})
