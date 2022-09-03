@@ -2,8 +2,10 @@
 
 int main() {
 	auto& logger = Logger::get();
+	logger.configure();
 
-	logger.log("Hello World");
+	Logger::log_debug("Hello World");
+	Logger::log_notice("Hello World");
 
     return 0;
 }
