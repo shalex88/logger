@@ -1,8 +1,10 @@
 #include <iomanip>
+#include "LoggerTypeStdio.h"
 #include "Logger.h"
 
 Logger& Logger::get() {
 	static Logger logger;
+
 	return logger;
 }
 
@@ -55,10 +57,9 @@ std::string Logger::format_message(const Logger::E_SEVERITY& severity, const std
 }
 
 void Logger::log(const Logger::E_SEVERITY& severity, const std::string& message) {
-	/* TODO: log if severity <= max_severity */
-	/* TODO: LoggerType.log() */
 	if (severity <= g_max_severity) {
-		std::cout << format_message(severity, message) << std::endl;
+//		std::cout << format_message(severity, message) << std::endl;
+		my_logger.log();
 	}
 }
 
@@ -94,6 +95,10 @@ void Logger::log_debug(const std::string& message) {
 	Logger::get().log(E_DEBUG, message);
 }
 
+Logger::Logger() {
+	std::cout << "Build Logger" << std::endl;
+}
 
-
-
+Logger::~Logger() {
+	std::cout << "Destroy Logger" << std::endl;
+}

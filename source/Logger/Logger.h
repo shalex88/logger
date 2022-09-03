@@ -1,16 +1,19 @@
 #ifndef LOGGER_LOGGER_H
 #define LOGGER_LOGGER_H
 
+#include "LoggerTypeStdio.h"
+#include "LoggerTypeFile.h"
 #include <iostream>
 
 /* Singleton */
+/* Factory Method */
 class Logger
 {
 public:
 	Logger(Logger const&) = delete;
 	Logger& operator=(Logger const&) = delete;
 	static Logger& get();
-	~Logger() = default;
+	~Logger();
 	enum E_SEVERITY {
 		E_EMERG,
 		E_ALERT,
@@ -31,8 +34,9 @@ public:
 	static void log_info(const std::string& message);
 	static void log_debug(const std::string& message);
 private:
-	Logger() = default;
+	Logger();
 	E_SEVERITY g_max_severity;
+	LoggerTypeStdio my_logger;
 	void log(const E_SEVERITY& severity, const std::string& message);
 	static std::string format_message(const E_SEVERITY& severity, const std::string& message);
 	static std::string severity_to_string(const E_SEVERITY& severity);
