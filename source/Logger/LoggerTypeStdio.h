@@ -1,12 +1,14 @@
 #ifndef LOGGER_LOGGERTYPESTDIO_H
 #define LOGGER_LOGGERTYPESTDIO_H
 
-class LoggerTypeStdio
+#include "LoggerType.h"
+
+class LoggerTypeStdio : LoggerType
 {
 public:
 	LoggerTypeStdio();
-	~LoggerTypeStdio();
-	void log();
+	~LoggerTypeStdio() override;
+	void log() override;
 };
 
 #endif //LOGGER_LOGGERTYPESTDIO_H

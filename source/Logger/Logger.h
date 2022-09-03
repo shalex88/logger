@@ -3,6 +3,7 @@
 
 #include "LoggerTypeStdio.h"
 #include "LoggerTypeFile.h"
+#include "LoggerType.h"
 #include <iostream>
 
 /* Singleton */
