@@ -1,21 +1,21 @@
-#include "Logger/Logger.h"
-#include "Logger/LoggerTypeStdio.h"
-#include "Logger/LoggerTypeFile.h"
-#include "Logger/LoggerTypeSyslog.h"
+#include "logger/logger.h"
+#include "logger/logger_type_stdio.h"
+#include "logger/logger_type_file.h"
+#include "logger/logger_type_syslog.h"
 
 int main() {
-	LoggerTypeStdio logger_type;
-	auto& logger = Logger::get();
-	logger.configure(&logger_type, E_LOG_SEVERITY::E_DEBUG);
+  LoggerTypeStdio logger_type;
+  auto &logger = Logger::Get();
+  logger.Configure(&logger_type, ELogSeverity::kDebug);
 
-	Logger::log_emerg("Emerg");
-	Logger::log_alert("Alert");
-	Logger::log_crit("Crit");
-	Logger::log_err("Err");
-	Logger::log_warning("Warning");
-	Logger::log_notice("Notice");
-	Logger::log_info("Info");
-	Logger::log_debug("Debug");
+  Logger::LogEmerg("Emerg");
+  Logger::LogAlert("Alert");
+  Logger::LogCrit("Crit");
+  Logger::LogErr("Err");
+  Logger::LogWarning("Warning");
+  Logger::LogNotice("Notice");
+  Logger::LogInfo("Info");
+  Logger::LogDebug("Debug");
 
-    return 0;
+  return 0;
 }
