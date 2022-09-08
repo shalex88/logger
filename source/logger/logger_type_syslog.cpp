@@ -6,10 +6,6 @@ LoggerTypeSyslog::LoggerTypeSyslog() {
   std::cout << "Build LoggerTypeSyslog" << std::endl;
 }
 
-LoggerTypeSyslog::~LoggerTypeSyslog() {
-  std::cout << "Destroy LoggerTypeSyslog" << std::endl;
-}
-
 void LoggerTypeSyslog::Log(const ELogSeverity &severity, const std::string &message) {
   syslog(static_cast<int>(severity), "%s", message.c_str());
 }

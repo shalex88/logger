@@ -5,8 +5,6 @@
 
 class LoggerTypeStdio : public LoggerType {
  public:
-  LoggerTypeStdio();
-  ~LoggerTypeStdio() override;
   void Log(const ELogSeverity &severity, const std::string &message) override;
 };
 

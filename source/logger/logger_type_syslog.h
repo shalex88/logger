@@ -6,7 +6,6 @@
 class LoggerTypeSyslog : public LoggerType {
  public:
   LoggerTypeSyslog();
-  ~LoggerTypeSyslog() override;
   void Log(const ELogSeverity &severity, const std::string &message) override;
 };
 

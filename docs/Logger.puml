@@ -2,51 +2,15 @@
 'https://plantuml.com/class-diagram
 skinparam classAttributeIconSize 0
 
-class StdioLogger
-note left: return new LoggerTypeStdio
-class FileLogger
-class SyslogLogger
-abstract class Logger
-note left: LoggerType stdiologger = CreateLogger()\nstdiologger.Log()
-interface LoggerType
-class LoggerTypeStdio
-class LoggerTypeFile
-class LoggerTypeSyslog
-
-Logger<|-- FileLogger
-Logger<|-- StdioLogger
-Logger<|-- SyslogLogger
-
-Logger -> LoggerType
-
-LoggerType <|.. LoggerTypeStdio
-LoggerType <|.. LoggerTypeFile
-LoggerType <|.. LoggerTypeSyslog
-
 abstract class Logger {
-+Log()
 +{abstract}CreateLogger(): LoggerType
 }
-
-interface LoggerType {
-+{abstract}Log()
-}
-
-class LoggerTypeFile {
-+Log()
-}
-
-class LoggerTypeStdio {
-+Log()
-}
-
-class LoggerTypeSyslog {
-+Log()
-}
+note left: LoggerType stdiologger = CreateLogger()\nstdiologger.Log()
 
 class StdioLogger {
 +CreateLogger(): LoggerType
 }
+note bottom: return new LoggerTypeStdio
 
 class FileLogger {
 +CreateLogger(): LoggerType
@@ -55,4 +19,31 @@ class FileLogger {
 class SyslogLogger {
 +CreateLogger(): LoggerType
 }
+
+interface LoggerType {
++{abstract}Log()
+}
+
+class LoggerTypeStdio {
++Log()
+}
+
+class LoggerTypeFile {
++Log()
+}
+
+class LoggerTypeSyslog {
++Log()
+}
+
+Logger <|-- StdioLogger
+Logger <|-- FileLogger
+Logger <|-- SyslogLogger
+
+Logger -> LoggerType
+
+LoggerType <|.. LoggerTypeStdio
+LoggerType <|.. LoggerTypeFile
+LoggerType <|.. LoggerTypeSyslog
+
 @enduml

@@ -1,21 +1,17 @@
-#include "logger/logger.h"
-#include "logger/logger_type_stdio.h"
-#include "logger/logger_type_file.h"
-#include "logger/logger_type_syslog.h"
+#include "logger/stdio_logger.h"
 
 int main() {
-  LoggerTypeStdio logger_type;
-  auto &logger = Logger::Get();
-  logger.Configure(&logger_type, ELogSeverity::kDebug);
+  auto factory_logger = std::make_unique<StdioLogger>();
+  auto logger = factory_logger->Get();
 
-  Logger::LogEmerg("Emerg");
-  Logger::LogAlert("Alert");
-  Logger::LogCrit("Crit");
-  Logger::LogErr("Err");
-  Logger::LogWarning("Warning");
-  Logger::LogNotice("Notice");
-  Logger::LogInfo("Info");
-  Logger::LogDebug("Debug");
+  logger->LogEmerg("Emerg");
+  logger->LogAlert("Alert");
+  logger->LogCrit("Crit");
+  logger->LogErr("Err");
+  logger->LogWarning("Warning");
+  logger->LogNotice("Notice");
+  logger->LogInfo("Info");
+  logger->LogDebug("Debug");
 
   return 0;
 }

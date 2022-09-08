@@ -2,14 +2,6 @@
 #include <iomanip>
 #include "logger_type.h"
 
-LoggerType::LoggerType() {
-  std::cout << "Build LoggerType" << std::endl;
-}
-
-LoggerType::~LoggerType() {
-  std::cout << "Destroy LoggerType" << std::endl;
-}
-
 std::string LoggerType::SeverityToString(const ELogSeverity &severity) {
   std::string severity_string{};
 
@@ -41,4 +33,36 @@ std::string LoggerType::FormatMessage(const ELogSeverity &severity, const std::s
   ss << "[" << SeverityToString(severity) << "] " << message;
 
   return ss.str();
+}
+
+void LoggerType::LogEmerg(const std::string &message) {
+  Log(ELogSeverity::kEmerg, message);
+}
+
+void LoggerType::LogAlert(const std::string &message) {
+  Log(ELogSeverity::kAlert, message);
+}
+
+void LoggerType::LogCrit(const std::string &message) {
+  Log(ELogSeverity::kCrit, message);
+}
+
+void LoggerType::LogErr(const std::string &message) {
+  Log(ELogSeverity::kErr, message);
+}
+
+void LoggerType::LogWarning(const std::string &message) {
+  Log(ELogSeverity::kWarning, message);
+}
+
+void LoggerType::LogNotice(const std::string &message) {
+  Log(ELogSeverity::kNotice, message);
+}
+
+void LoggerType::LogInfo(const std::string &message) {
+  Log(ELogSeverity::kInfo, message);
+}
+
+void LoggerType::LogDebug(const std::string &message) {
+  Log(ELogSeverity::kDebug, message);
 }
