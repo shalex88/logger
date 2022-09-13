@@ -6,10 +6,10 @@
 
 class LoggerTypeFile : public LoggerType {
  public:
-  LoggerTypeFile();
-  void Log(const ELogSeverity &severity, const std::string &message) override;
+  ~LoggerTypeFile() override = default;
+  void Print(const ELogSeverity &severity, const std::string &message) override;
  private:
-  std::ofstream out_file_{"./Log.txt", std::ios::trunc};
+  std::ofstream out_file_{"./log.txt", std::ios::trunc};
 };
 
 #endif //LOGGER_SOURCE_LOGGER_LOGGER_TYPE_FILE_H_

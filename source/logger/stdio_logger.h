@@ -2,15 +2,13 @@
 #define LOGGER_SOURCE_LOGGER_STDIO_LOGGER_H_
 
 #include "logger_type.h"
-#include <iostream>
-#include <memory>
 #include "logger.h"
 
-class StdioLogger : Logger {
+class StdioLogger : public Logger {
  public:
-  StdioLogger();
-  ~StdioLogger() override;
-  std::unique_ptr<LoggerType> Get() override;
+  ~StdioLogger() override = default;
+  /* Factory method */
+  std::unique_ptr<LoggerType> Create() override;
 };
 
 #endif //LOGGER_SOURCE_LOGGER_STDIO_LOGGER_H_

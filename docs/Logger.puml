@@ -2,48 +2,70 @@
 'https://plantuml.com/class-diagram
 skinparam classAttributeIconSize 0
 
-abstract class Logger {
-+{abstract}CreateLogger(): LoggerType
-}
-note left: LoggerType stdiologger = CreateLogger()\nstdiologger.Log()
-
-class StdioLogger {
-+CreateLogger(): LoggerType
-}
-note bottom: return new LoggerTypeStdio
-
-class FileLogger {
-+CreateLogger(): LoggerType
-}
-
-class SyslogLogger {
-+CreateLogger(): LoggerType
-}
-
+'Classes
 interface LoggerType {
-+{abstract}Log()
-}
-
-class LoggerTypeStdio {
-+Log()
++{abstract}Print()
 }
 
 class LoggerTypeFile {
-+Log()
++Print()
+}
+
+class LoggerTypeStdio {
++Print()
 }
 
 class LoggerTypeSyslog {
-+Log()
++Print()
 }
 
-Logger <|-- StdioLogger
-Logger <|-- FileLogger
-Logger <|-- SyslogLogger
+abstract class Logger {
++Log()
++{abstract}Create(): std::unique_ptr<LoggerType>
+}
+
+class StdioLogger {
++Create(): std::unique_ptr<LoggerType>
+}
+
+class FileLogger {
++Create(): std::unique_ptr<LoggerType>
+}
+
+class SyslogLogger {
++Create(): std::unique_ptr<LoggerType>
+}
+
+'Relations
+Logger<|-- StdioLogger
+Logger<|-- FileLogger
+Logger<|-- SyslogLogger
 
 Logger -> LoggerType
 
 LoggerType <|.. LoggerTypeStdio
 LoggerType <|.. LoggerTypeFile
 LoggerType <|.. LoggerTypeSyslog
+
+'Notes
+note as N1
+    <b><u>Factory method pattern</u></b>
+    <b>Usage:</b>
+    StdioLogger logger;
+    logger.log();
+end note
+
+note left of Logger::Log()
+    static auto p_logger = this->Create();
+    p_logger->Print();
+end note
+
+note left of Logger::Create()
+    Factory method
+end note
+
+note right of StdioLogger::Create()
+    return std::make_unique<LoggerTypeStdio>();
+end note
 
 @enduml

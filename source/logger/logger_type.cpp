@@ -34,35 +34,3 @@ std::string LoggerType::FormatMessage(const ELogSeverity &severity, const std::s
 
   return ss.str();
 }
-
-void LoggerType::LogEmerg(const std::string &message) {
-  Log(ELogSeverity::kEmerg, message);
-}
-
-void LoggerType::LogAlert(const std::string &message) {
-  Log(ELogSeverity::kAlert, message);
-}
-
-void LoggerType::LogCrit(const std::string &message) {
-  Log(ELogSeverity::kCrit, message);
-}
-
-void LoggerType::LogErr(const std::string &message) {
-  Log(ELogSeverity::kErr, message);
-}
-
-void LoggerType::LogWarning(const std::string &message) {
-  Log(ELogSeverity::kWarning, message);
-}
-
-void LoggerType::LogNotice(const std::string &message) {
-  Log(ELogSeverity::kNotice, message);
-}
-
-void LoggerType::LogInfo(const std::string &message) {
-  Log(ELogSeverity::kInfo, message);
-}
-
-void LoggerType::LogDebug(const std::string &message) {
-  Log(ELogSeverity::kDebug, message);
-}

@@ -5,8 +5,8 @@
 
 class LoggerTypeSyslog : public LoggerType {
  public:
-  LoggerTypeSyslog();
-  void Log(const ELogSeverity &severity, const std::string &message) override;
+  ~LoggerTypeSyslog() override = default;
+  void Print(const ELogSeverity &severity, const std::string &message) override;
 };
 
 #endif //LOGGER_SOURCE_LOGGER_LOGGER_TYPE_SYSLOG_H_
