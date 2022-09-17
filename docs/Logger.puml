@@ -61,7 +61,7 @@ note left of Logger::Log()
 end note
 
 note left of Logger::Create()
-    Factory method
+    <b>Factory method</b>
 end note
 
 note right of StdioLogger::Create()
