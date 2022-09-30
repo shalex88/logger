@@ -3,6 +3,11 @@
 skinparam classAttributeIconSize 0
 
 'Classes
+object UserCode {
+    StdioLogger logger;
+    logger.log();
+}
+
 interface LoggerType {
 +{abstract}Print()
 }
@@ -37,6 +42,8 @@ class SyslogLogger {
 }
 
 'Relations
+UserCode --> StdioLogger
+
 Logger<|-- StdioLogger
 Logger<|-- FileLogger
 Logger<|-- SyslogLogger
@@ -50,9 +57,6 @@ LoggerType <|.. LoggerTypeSyslog
 'Notes
 note as N1
     <b><u>Factory method pattern</u></b>
-    <b>Usage:</b>
-    StdioLogger logger;
-    logger.log();
 end note
 
 note left of Logger::Log()
@@ -64,7 +68,7 @@ note left of Logger::Create()
     <b>Factory method</b>
 end note
 
-note right of StdioLogger::Create()
+note left of StdioLogger::Create()
     return std::make_unique<LoggerTypeStdio>();
 end note
 
